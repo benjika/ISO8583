@@ -1,0 +1,1106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<ISO8583Field>
+
+    <!--
+    General Representation
+    Notation Description
+    a alphabetic characters only (MUST USE UPPER CASE LETTERS)
+    n numeric characters only
+    s special characters only
+    an alpha and numeric characters
+    as alpha and special characters
+    ns numeric and special characters
+    ans alpha, numeric, and special characters
+    b binary data
+    z magnetic stripe track-2 or track-3 data
+    x character “C” or “D” to indicate “credit” or “debit” value of a dollar amount
+    -->
+
+    <!--
+    Length Attributes
+    Notation Description
+    -digit(s) Fixed length in number of positions.
+    Example: “n-3” indicates a 3-position numeric field.
+    Example: “an-10” indicates a 10-position alphanumeric field.
+
+    ...digit(s) Variable length field, with maximum number of positions specified.
+    Example: “n...11” indicates a variable length numeric field of up to 11 digits.
+    Example: “an...25” indicates a variable length alphanumeric field
+    of up to 25 characters.
+
+    LLVAR   When present with a variable length field specification, this
+            indicates that the data element contains two subfields:
+            LL indicates the number of positions in the variable-length data
+            field that follows. Length may be 1 to 99, unless otherwise
+            restricted.
+            VAR is the variable length data field.
+            Example: “an...25, LLVAR” indicates a variable-length
+            alphanumeric data field having a length of up to 25 characters.
+    LLLVAR  When present with a variable length field specification, this
+            indicates that the data element contains two subfields:
+            LLL indicates the number of positions in the variable-length data
+            field that follows. Length may be 1 to 999, unless otherwise
+            restricted.
+            VAR is the variable length data field.
+            Example: “an...500, LLLVAR” indicates a variable-length
+            alphanumeric data field having a length of up to 500 characters.
+    -->
+
+    <!--
+    Field Content Attributes
+    Notation    Description
+    MM          month (two digits, 01–12)
+    DD          day (two digits, 01–31)
+    YY          year (last two digits of calendar year, 00–99)
+    hh          hour (two digits, 00–23)
+    mm          minute (two digits, 00–59)
+    ss          second (two digits, 00–59)
+    -->
+
+    <!--
+    Notation Interpretation
+    a   alphabetic characters
+    n   numeric characters
+    s   special characters
+    an  alpha and numeric characters
+    as  alpha and special characters
+    ns  numeric and special characters
+    ans alpha, numeric, and special characters
+    z   magnetic stripe track-2 or track-3 data
+    x   character “C” or “D” to indicate credit or debit value of associated amount
+    -->
+
+    <bitfield
+            id="0"
+            length="4"
+            name="MESSAGE TYPE INDICATOR"
+            fixed="true"
+            class="MTI"/>
+
+    <!-- 1 Bit map, Secondary b-64 -->
+    <bitfield
+            id="1"
+            length="16"
+            name="BIT MAP"
+            fixed="true"
+            class="BITMAP"/>
+
+    <!-- 2 Primary Account Number n...19; LLVAR-->
+    <bitfield
+            id="2"
+            length="19"
+            name="SECRET ID"
+            fixed="false"
+            class="Numeric-LL"/>
+
+    <!--3 Processing Code n-6-->
+    <bitfield
+            id="3"
+            length="6"
+            name="PROCESSING CODE"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--4 Amount, Transaction n-12-->
+    <bitfield
+            id="4"
+            length="12"
+            name="AMOUNT, TRANSACTION"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--5 Amount, Settlement n-12-->
+    <bitfield
+            id="5"
+            length="12"
+            name="AMOUNT, SETTLEMENT"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--6 Amount, Cardholder Billing (not currently used) n-12-->
+    <bitfield
+            id="6"
+            length="12"
+            name="AMOUNT, CARDHOLDER BILLING"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--7 Transmission Date and Time n-10; MMDDhhmmss-->
+    <bitfield
+            id="7"
+            length="10"
+            name="TRANSMISSION DATE AND TIME"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--8 Amount, Cardholder Billing Fee(not currently used) n-8-->
+    <bitfield
+            id="8"
+            length="8"
+            name="AMOUNT, CARDHOLDER BILLING FEE"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--9 Conversion Rate, Settlement n-8-->
+    <bitfield
+            id="9"
+            length="8"
+            name="CONVERSION RATE, SETTLEMENT"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--10 Conversion Rate, Cardholder Billing n-8-->
+    <bitfield
+            id="10"
+            length="8"
+            name="CONVERSION RATE, CARDHOLDER BILLING"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--11 System Trace Audit Number n-6-->
+    <bitfield
+            id="11"
+            length="6"
+            name="SYSTEM TRACE AUDIT NUMBER"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--12 Time, Local Transaction n-6; hhmmss-->
+    <bitfield
+            id="12"
+            length="6"
+            name="TIME, LOCAL TRANSACTION"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--13 Date, Local Transaction n-4; MMDD-->
+    <bitfield
+            id="13"
+            length="4"
+            name="DATE, LOCAL TRANSACTION"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--14 Date, Expiration n-4; YYMM-->
+    <bitfield
+            id="14"
+            length="4"
+            name="DATE, EXPIRATION"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--15 Date, Settlement n-4; MMDD-->
+    <bitfield
+            id="15"
+            length="4"
+            name="DATE, SETTLEMENT"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--16 Date, Conversion n-4; MMDD-->
+    <bitfield
+            id="16"
+            length="4"
+            name="DATE, CONVERSION"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--17 Date, Capture(not currently used)n-4; MMDD-->
+    <bitfield
+            id="17"
+            length="4"
+            name="DATE, CAPTURE"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--18 Merchant Type (MCC) n-4-->
+    <bitfield
+            id="18"
+            length="4"
+            name="MERCHANTS TYPE"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--19 Acquiring Institution Country Code(not currently used) n-3-->
+    <bitfield
+            id="19"
+            length="3"
+            name="ACQUIRING INSTITUTION COUNTRY CODE"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--20 Primary Account Number, Extended, Country Code (not currently used) n-3-->
+    <bitfield
+            id="20"
+            length="3"
+            name="PAN EXTENDED COUNTRY CODE"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--21 Forwarding Institution Country Code (not currently used) n-3-->
+    <bitfield
+            id="21"
+            length="3"
+            name="FORWARDING INSTITUTION COUNTRY CODE"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--22 Point of Service Entry Mode n-3-->
+    <bitfield
+            id="22"
+            length="3"
+            name="POINT OF SERVICE ENTRY MODE"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--23 Card Sequence Number n-3-->
+    <bitfield
+            id="23"
+            length="3"
+            name="CARD SEQUENCE NUMBER"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--24 Network International Identifier (not currently used) n-3-->
+    <bitfield
+            id="24"
+            length="3"
+            name="NETWORK INTERNATIONAL IDENTIFIEER"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--25 Point of Service Condition Code (not currently used) n-2-->
+    <bitfield
+            id="25"
+            length="2"
+            name="POINT OF SERVICE CONDITION CODE"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--26 Point of Service PIN Capture Code n-2-->
+    <bitfield
+            id="26"
+            length="2"
+            name="POINT OF SERVICE PIN CAPTURE CODE"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--27 Authorization Identification Response Length (not currently used) n-1-->
+    <bitfield
+            id="27"
+            length="1"
+            name="AUTHORIZATION IDENTIFICATION RESP LEN"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--28 Amount, Transaction Fee x+n-8-->
+    <bitfield
+            id="28"
+            length="9"
+            name="AMOUNT, TRANSACTION FEE"
+            fixed="true"
+            class="AMOUNT"/>
+
+    <!--29 Amount, Settlement Fee x+n-8-->
+    <bitfield
+            id="29"
+            length="9"
+            name="AMOUNT, SETTLEMENT FEE"
+            fixed="true"
+            class="AMOUNT"/>
+
+    <!--30 Amount, Transaction Processing Fee (not currently used) x+n-8-->
+    <bitfield
+            id="30"
+            length="9"
+            name="AMOUNT, TRANSACTION PROCESSING FEE"
+            fixed="true"
+            class="org.jpos.iso.IFA_AMOUNT"/>
+
+    <!--31 Amount, Settlement Processing Fee x+n-8-->
+    <bitfield
+            id="31"
+            length="9"
+            name="AMOUNT, SETTLEMENT PROCESSING FEE"
+            fixed="true"
+            class="org.jpos.iso.IFA_AMOUNT"/>
+
+    <!--32 Acquiring Institution Identification Code n...11; LLVAR-->
+    <bitfield
+            id="32"
+            length="11"
+            name="ACQUIRING INSTITUTION IDENT CODE"
+            fixed="false"
+            class="Numeric-LL"/>
+
+    <!--33 Forwarding Institution Identification Code n...11; LLVAR-->
+    <bitfield
+            id="33"
+            length="11"
+            name="FORWARDING INSTITUTION IDENT CODE"
+            fixed="false"
+            class="Numeric-LL"/>
+
+    <!--34 Primary Account Number, Extended (not currently used) ns...28; LLVAR-->
+    <bitfield
+            id="34"
+            length="28"
+            name="PAN EXTENDED"
+            fixed="false"
+            class="Ascii-LL"/>
+
+    <!--35 Track-2 Data z...37; LLVAR-->
+    <bitfield
+            id="35"
+            length="37"
+            name="TRACK 2 DATA"
+            fixed="false"
+            class="Numeric-LL"/>
+
+    <!--36 Track-3 Data (not currently used) z...104; LLLVAR-->
+    <bitfield
+            id="36"
+            length="104"
+            name="TRACK 3 DATA"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--37 Retrieval Reference Number an-12-->
+    <bitfield
+            id="37"
+            length="12"
+            name="RETRIEVAL REFERENCE NUMBER"
+            fixed="true"
+            class="Ascii"/>
+
+    <!--38 Authorization Identification Response an-6-->
+    <bitfield
+            id="38"
+            length="6"
+            name="AUTHORIZATION IDENTIFICATION RESPONSE"
+            fixed="true"
+            class="Ascii"/>
+
+    <!--39 Response Code an-2-->
+    <bitfield
+            id="39"
+            length="2"
+            name="RESPONSE CODE"
+            fixed="true"
+            class="Ascii"/>
+
+    <!--40 Service Restriction Code (not currently used) an-3-->
+    <bitfield
+            id="40"
+            length="3"
+            name="SERVICE RESTRICTION CODE"
+            fixed="true"
+            class="Ascii"/>
+
+    <!--41 Card Acceptor Terminal Identification ans-8-->
+    <bitfield
+            id="41"
+            length="8"
+            name="CARD ACCEPTOR TERMINAL IDENTIFICACION"
+            fixed="true"
+            class="Ascii"/>
+
+    <!--42 Card Acceptor Identification Code ans-15-->
+    <bitfield
+            id="42"
+            length="15"
+            name="CARD ACCEPTOR IDENTIFICATION CODE"
+            fixed="true"
+            class="Ascii"/>
+
+    <!--43 Card Acceptor Name/Location ans-40-->
+    <bitfield
+            id="43"
+            length="40"
+            name="CARD ACCEPTOR NAME/LOCATION"
+            fixed="true"
+            class="Ascii"/>
+
+    <!--44 Additional Response Data ans...25; LLVAR-->
+    <bitfield
+            id="44"
+            length="25"
+            name="ADITIONAL RESPONSE DATA"
+            fixed="false"
+            class="Ascii-LL"/>
+
+    <!--45 Track-1 Data ans...76; LLVAR-->
+    <bitfield
+            id="45"
+            length="76"
+            name="TRACK 1 DATA"
+            fixed="false"
+            class="Ascii-LL"/>
+
+    <!--46 Additional Data (ISO) (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="46"
+            length="999"
+            name="ADDITIONAL DATA - ISO"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--47 Additional Data (National) (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="47"
+            length="999"
+            name="ADDITIONAL DATA - NATIONAL"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--48 Additional Data (Private/ISO 8583– 1987) ans...999; LLLVAR-->
+    <bitfield
+            id="48"
+            length="999"
+            name="ADDITIONAL DATA - PRIVATE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--49 Currency Code, Transaction n-3-->
+    <bitfield
+            id="49"
+            length="3"
+            name="CURRENCY CODE, TRANSACTION"
+            fixed="true"
+            class="Ascii"/>
+
+    <!--50 Currency Code, Settlement n-3-->
+    <bitfield
+            id="50"
+            length="3"
+            name="CURRENCY CODE, SETTLEMENT"
+            fixed="true"
+            class="Ascii"/>
+
+    <!--51 Currency Code, Cardholder Billing n-3-->
+    <bitfield
+            id="51"
+            length="3"
+            name="CURRENCY CODE, CARDHOLDER BILLING"
+            fixed="true"
+            class="Ascii"/>
+
+    <!--52 Personal Identification Number (PIN) Data b-64-->
+    <bitfield
+            id="52"
+            length="16"
+            name="PIN DATA"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--53 Security Related Control Information (not currently used) n-16-->
+    <bitfield
+            id="53"
+            length="16"
+            name="SECURITY RELATED CONTROL INFORMATION"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--54 Additional Amounts an...120; LLLVAR-->
+    <bitfield
+            id="54"
+            length="120"
+            name="ADDITIONAL AMOUNTS"
+            fixed="false"
+            class="Ascii-LL"/>
+
+    <!--55 Integrated Circuit Card (ICC) System Related Data b...255; LLLVAR-->
+    <bitfield
+            id="55"
+            length="999"
+            name="RESERVED ISO"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--56 Reserved (ISO) (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="56"
+            length="999"
+            name="RESERVED ISO"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--57 Reserved (National) (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="57"
+            length="999"
+            name="RESERVED NATIONAL"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--58 Reserved (National) (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="58"
+            length="999"
+            name="RESERVED NATIONAL"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--59 Reserved (National) (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="59"
+            length="999"
+            name="RESERVED NATIONAL"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--60 Advice Reason Code ans...060; LLLVAR-->
+    <bitfield
+            id="60"
+            length="999"
+            name="RESERVED PRIVATE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--61 Point of Service (POS) Data ans...026; LLLVAR-->
+    <bitfield
+            id="61"
+            length="999"
+            name="RESERVED PRIVATE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--62 Intermediate Network Facility (INF) Data ans...050; LLLVAR-->
+    <bitfield
+            id="62"
+            length="999"
+            name="RESERVED PRIVATE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--63 Network Data ans...012; LLLVAR-->
+    <bitfield
+            id="63"
+            length="999"
+            name="RESERVED PRIVATE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--64 Message Authentication Code (MAC) (not currently used) b-64-->
+    <bitfield
+            id="64"
+            length="8"
+            name="MESSAGE AUTHENTICATION CODE FIELD"
+            fixed="true"
+            class="Binary"/>
+
+    <!--65 Bit map, Extended (not currently used) b-64-->
+    <bitfield
+            id="65"
+            length="8"
+            name="BITMAP, EXTENDED"
+            fixed="true"
+            class="Binary"/>
+
+    <!--66 Settlement Code n-1-->
+    <bitfield
+            id="66"
+            length="1"
+            name="SETTLEMENT CODE"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--67 Extended Payment Code (not currently used) n-2-->
+    <bitfield
+            id="67"
+            length="2"
+            name="EXTENDED PAYMENT CODE"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--68 Receiving Institution Country Code (not currently used) n-3-->
+    <bitfield
+            id="68"
+            length="3"
+            name="RECEIVING INSTITUTION COUNTRY CODE"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--69 Settlement Institution Country Code (not currently used) n-3-->
+    <bitfield
+            id="69"
+            length="3"
+            name="SETTLEMENT INSTITUTION COUNTRY CODE"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--70 Network Management Information Code n-3-->
+    <bitfield
+            id="70"
+            length="3"
+            name="NETWORK MANAGEMENT INFORMATION CODE"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--71 Message Number (not currently used) n-4-->
+    <bitfield
+            id="71"
+            length="4"
+            name="MESSAGE NUMBER"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--72 Message Number Last (not currently used) n-4-->
+    <bitfield
+            id="72"
+            length="4"
+            name="MESSAGE NUMBER LAST"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--73 Date, Action (not currently used) n-6; YYMMDD-->
+
+    <bitfield
+            id="73"
+            length="6"
+            name="DATE ACTION"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--74 Credits, Number n-10-->
+    <bitfield
+            id="74"
+            length="10"
+            name="CREDITS NUMBER"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--75 Credits, Reversal Number n-10-->
+    <bitfield
+            id="75"
+            length="10"
+            name="CREDITS REVERSAL NUMBER"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--76 Debits, Number n-10-->
+    <bitfield
+            id="76"
+            length="10"
+            name="DEBITS NUMBER"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--77 Debits, Reversal Number n-10-->
+    <bitfield
+            id="77"
+            length="10"
+            name="DEBITS REVERSAL NUMBER"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--78 Transfers, Number n-10-->
+    <bitfield
+            id="78"
+            length="10"
+            name="TRANSFER NUMBER"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--79 Transfers, Reversal Number n-10-->
+    <bitfield
+            id="79"
+            length="10"
+            name="TRANSFER REVERSAL NUMBER"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--80 Inquiries, Number n-10-->
+    <bitfield
+            id="80"
+            length="10"
+            name="INQUIRIES NUMBER"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--81 Authorizations, Number n-10-->
+    <bitfield
+            id="81"
+            length="10"
+            name="AUTHORIZATION NUMBER"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--82 Credits, Processing Fee Amount n-12-->
+    <bitfield
+            id="82"
+            length="12"
+            name="CREDITS, PROCESSING FEE AMOUNT"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--83 Credits, Transaction Fee Amount n-12-->
+    <bitfield
+            id="83"
+            length="12"
+            name="CREDITS, TRANSACTION FEE AMOUNT"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--84 Debits, Processing Fee Amount n-12-->
+    <bitfield
+            id="84"
+            length="12"
+            name="DEBITS, PROCESSING FEE AMOUNT"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--85 Debits, Transaction Fee Amount n-12-->
+    <bitfield
+            id="85"
+            length="12"
+            name="DEBITS, TRANSACTION FEE AMOUNT"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--86 Credits, Amount n-16-->
+    <bitfield
+            id="86"
+            length="16"
+            name="CREDITS, AMOUNT"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--87 Credits, Reversal Amount n-16-->
+    <bitfield
+            id="87"
+            length="16"
+            name="CREDITS, REVERSAL AMOUNT"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--88 Debits, Amount n-16-->
+    <bitfield
+            id="88"
+            length="16"
+            name="DEBITS, AMOUNT"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--89 Debits, Reversal Amount n-16-->
+    <bitfield
+            id="89"
+            length="16"
+            name="DEBITS, REVERSAL AMOUNT"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--90 Original Data Elements n-42-->
+    <bitfield
+            id="90"
+            length="42"
+            name="ORIGINAL DATA ELEMENTS"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--91 File Update Code (not currently used) an-1-->
+    <bitfield
+            id="91"
+            length="1"
+            name="FILE UPDATE CODE"
+            fixed="true"
+            class="Ascii"/>
+
+    <!--92 File Security Code (not currently used) an-2-->
+    <bitfield
+            id="92"
+            length="2"
+            name="FILE SECURITY CODE"
+            fixed="true"
+            class="Ascii"/>
+
+    <!--93 Response Indicator (not currently used) an-5-->
+    <bitfield
+            id="93"
+            length="6"
+            name="RESPONSE INDICATOR"
+            fixed="true"
+            class="Ascii"/>
+
+    <!--94 Service Indicator (not currently used) an-7-->
+    <bitfield
+            id="94"
+            length="7"
+            name="SERVICE INDICATOR"
+            fixed="true"
+            class="Ascii"/>
+
+    <!--95 Replacement Amount n-42-->
+    <bitfield
+            id="95"
+            length="42"
+            name="REPLACEMENT AMOUNTS"
+            fixed="true"
+            class="Ascii"/>
+
+    <!--96 Message Security Code (not currently used) b-64-->
+    <bitfield
+            id="96"
+            length="16"
+            name="MESSAGE SECURITY CODE"
+            fixed="true"
+            class="Binary"/>
+
+    <!--97 Amount, Net Settlement x+n-16-->
+    <bitfield
+            id="97"
+            length="17"
+            name="AMOUNT, NET SETTLEMENT"
+            fixed="true"
+            class="Numeric"/>
+
+    <!--98 Payee (not currently used) ans-25-->
+    <bitfield
+            id="98"
+            length="25"
+            name="PAYEE"
+            fixed="true"
+            class="Ascii"/>
+
+    <!--99 Settlement Institution Identification Code n...11; LLVAR-->
+    <bitfield
+            id="99"
+            length="11"
+            name="SETTLEMENT INSTITUTION IDENT CODE"
+            fixed="false"
+            class="Numeric-LL"/>
+
+    <!--100 Receiving Institution Identification Code n...11; LLVAR-->
+    <bitfield
+            id="100"
+            length="11"
+            name="RECEIVING INSTITUTION IDENT CODE"
+            fixed="false"
+            class="Numeric-LL"/>
+
+    <!--101 File Name (not currently used) ans...17; LLVAR-->
+    <bitfield
+            id="101"
+            length="17"
+            name="FILE NAME"
+            fixed="false"
+            class="Ascii"/>
+
+    <!--102 Account Identification-1 ans...28; LLVAR-->
+    <bitfield
+            id="102"
+            length="28"
+            name="FROM ACCOUNT"
+            fixed="false"
+            class="Ascii-LL"/>
+
+    <!--103 Account Identification-2 ans...28; LLVAR-->
+    <bitfield
+            id="103"
+            length="28"
+            name="ACCOUNT IDENTIFICATION 2"
+            fixed="false"
+            class="Ascii-LL"/>
+
+    <!--104 Transaction Description (not currently used) ans...100; LLLVAR-->
+    <bitfield
+            id="104"
+            length="100"
+            name="TRANSACTION DESCRIPTION"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--105 Reserved for ISO use (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="105"
+            length="999"
+            name="RESERVED ISO USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--106 Reserved for ISO use (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="106"
+            length="999"
+            name="RESERVED ISO USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--107 Reserved for ISO use (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="107"
+            length="999"
+            name="RESERVED ISO USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--108 Reserved for ISO use (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="108"
+            length="999"
+            name="RESERVED ISO USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--109 Reserved for ISO use (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="109"
+            length="999"
+            name="RESERVED ISO USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--110 Reserved for ISO use (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="110"
+            length="999"
+            name="RESERVED ISO USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--111 Reserved for ISO use (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="111"
+            length="999"
+            name="RESERVED ISO USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--112 Parcelas ans...100; LLVAR-->
+    <bitfield
+            id="112"
+            length="100"
+            name="RESERVED NATIONAL USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--113 Reserved for National use (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="113"
+            length="999"
+            name="RESERVED NATIONAL USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--114 Reserved for National use (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="114"
+            length="999"
+            name="RESERVED NATIONAL USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--115 Reserved for National use (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="115"
+            length="999"
+            name="RESERVED NATIONAL USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--116 Reserved for National use (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="116"
+            length="999"
+            name="RESERVED NATIONAL USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--117 Reserved for National use (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="117"
+            length="999"
+            name="RESERVED NATIONAL USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--118 Reserved for National use (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="118"
+            length="999"
+            name="RESERVED NATIONAL USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--119 Reserved for National use (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="119"
+            length="999"
+            name="RESERVED NATIONAL USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--120 Record Data ans...999; LLLVAR-->
+    <bitfield
+            id="120"
+            length="999"
+            name="RESERVED PRIVATE USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--121 Authorizing Agent Identification Code (not currently used) ans...011; LLLVAR-->
+    <bitfield
+            id="121"
+            length="999"
+            name="RESERVED PRIVATE USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--122 Reserved for future definition and use by MasterCard (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="122"
+            length="999"
+            name="RESERVED PRIVATE USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--123 Reserved for future definition and use by MasterCard (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="123"
+            length="999"
+            name="RESERVED PRIVATE USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--124 Reserved for future definition and use by MasterCard (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="124"
+            length="999"
+            name="RESERVED PRIVATE USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--125 Reserved for future definition and use by MasterCard (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="125"
+            length="999"
+            name="RESERVED PRIVATE USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--126 Reserved (Private/ISO 8583–1987) (not currently used) ans...999; LLLVAR-->
+    <bitfield
+            id="126"
+            length="999"
+            name="RESERVED PRIVATE USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--127 Private Data ans...050; LLLVAR-->
+    <bitfield
+            id="127"
+            length="999"
+            name="RESERVED PRIVATE USE"
+            fixed="false"
+            class="Ascii-LLL"/>
+
+    <!--128 Message Authentication Code (not currently used) b-64*/-->
+    <bitfield
+            id="128"
+            length="8"
+            name="MAC 2"
+            fixed="true"
+            class="Binary"/>
+
+</ISO8583Field>
