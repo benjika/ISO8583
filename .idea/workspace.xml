@@ -34,20 +34,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/hit/fintech2018/katz/MySerializer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+            <state relative-caret-position="529">
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/hit/fintech2018/katz/Encoder.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+              <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
               <folding>
                 <element signature="method#mtiEncoding#0;class#Encoder#0" />
                 <element signature="method#numericEncoding#0;class#Encoder#0" />
@@ -79,6 +79,9 @@
       <find>Numeric</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -94,9 +97,9 @@
         <option value="$PROJECT_DIR$/src/org/hit/fintech2018/katz/ISO8583Field.java" />
         <option value="$PROJECT_DIR$/src/org/hit/fintech2018/katz/XMLParserISO8583.java" />
         <option value="$PROJECT_DIR$/src/org/hit/fintech2018/katz/Serializer.java" />
-        <option value="$PROJECT_DIR$/src/org/hit/fintech2018/katz/MySerializer.java" />
         <option value="$PROJECT_DIR$/src/org/hit/fintech2018/katz/Encoder.java" />
         <option value="$PROJECT_DIR$/src/org/hit/fintech2018/katz/Main.java" />
+        <option value="$PROJECT_DIR$/src/org/hit/fintech2018/katz/MySerializer.java" />
       </list>
     </option>
   </component>
@@ -105,12 +108,13 @@
     <option name="width" value="697" />
     <option name="height" value="735" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -133,7 +137,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -143,7 +147,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551386226084" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551450580403" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
@@ -210,11 +214,12 @@
       <workItem from="1551383866421" duration="1512000" />
       <workItem from="1551387027978" duration="165000" />
       <workItem from="1551446490166" duration="39000" />
+      <workItem from="1551449576364" duration="1364000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90343000" />
+    <option name="totallyTimeSpent" value="91707000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -228,7 +233,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14674735" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14901665" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -298,19 +303,19 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/org/hit/fintech2018/katz/MySerializer.java</url>
-          <line>15</line>
+          <line>19</line>
           <properties />
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/org/hit/fintech2018/katz/MySerializer.java</url>
-          <line>18</line>
+          <line>22</line>
           <properties />
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/org/hit/fintech2018/katz/MySerializer.java</url>
-          <line>19</line>
+          <line>23</line>
           <properties />
           <option name="timeStamp" value="29" />
         </line-breakpoint>
@@ -475,17 +480,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/hit/fintech2018/katz/MySerializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/hit/fintech2018/katz/Encoder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
           <folding>
             <element signature="method#mtiEncoding#0;class#Encoder#0" />
             <element signature="method#numericEncoding#0;class#Encoder#0" />
@@ -494,6 +492,13 @@
             <element signature="method#validateNumericArray#0;class#Encoder#0" />
             <element signature="method#concatArrays#0;class#Encoder#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/hit/fintech2018/katz/MySerializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
         </state>
       </provider>
     </entry>
