@@ -5,7 +5,11 @@ import java.util.Map;
 public class MySerializer implements ISO8583Serializer {
 
     @Override
-    public byte[] serializeISO8583(int version, Map<Integer, byte[]> data) {
+    public byte[] serializeISO8583(int version, Map<Integer, byte[]> data) throws Exception {
+
+        if (version != 0 && version != 1 && version != 2)
+            throw new Exception("Wrong ISO 8583 version");
+
         XMLParserISO8583 xmlParserISO8583 = new XMLParserISO8583();
         Encoder encoder = new Encoder();
         byte[] result = null;
